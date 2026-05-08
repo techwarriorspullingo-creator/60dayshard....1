@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>60 Days Hard Challenge — Mentor Divakar R</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+
+<style>
+:root{
+  --bg:#0a0a0a;
+  --card:#111;
+  --card2:#181818;
+  --accent:#f5c542;
+  --accent2:#ff6b4a;
+  --text:#f2f2f2;
+  --muted:#9a9a9a;
+  --border:rgba(245,197,66,0.18);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  overflow-x:hidden;
+}
+
+/* BACKGROUND */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+  radial-gradient(circle at top, rgba(245,197,66,0.12), transparent 40%),
+  radial-gradient(circle at bottom right, rgba(255,107,74,0.10), transparent 30%);
+  pointer-events:none;
+  z-index:-1;
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:40px 20px;
+  position:relative;
+}
+
+.hero-content{
+  max-width:900px;
+  animation:fadeUp 1s ease;
+}
+
+.badge{
+  display:inline-block;
+  padding:8px 18px;
+  border:1px solid var(--accent);
+  color:var(--accent);
+  border-radius:40px;
+  font-size:.8rem;
+  letter-spacing:.15em;
+  font-family:'Space Mono',monospace;
+  margin-bottom:28px;
+}
+
+.hero h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(5rem,15vw,12rem);
+  line-height:.9;
+  letter-spacing:.03em;
+}
+
+.hero h1 span{
+  color:var(--accent);
+}
+
+.hero-sub{
+  margin-top:20px;
+  color:var(--muted);
+  font-size:1rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
+.hero-btns{
+  margin-top:40px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:16px;
+}
+
+.btn{
+  padding:14px 28px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  transition:.25s;
+  font-family:'Space Mono',monospace;
+  text-decoration:none;
+}
+
+.btn-primary{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#000;
+}
+
+.btn-secondary{
+  border:1px solid var(--accent);
+  background:transparent;
+  color:var(--accent);
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+}
+
+/* CONTAINER */
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:80px 20px;
+}
+
+/* SECTION */
+.section{
+  margin-bottom:90px;
+}
+
+.section-label{
+  color:var(--accent);
+  font-size:.8rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  margin-bottom:14px;
+  font-family:'Space Mono',monospace;
+}
+
+.section-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2.5rem,5vw,4rem);
+  letter-spacing:.04em;
+  margin-bottom:40px;
+}
+
+/* PROFILE */
+.profile{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:40px;
+  display:flex;
+  align-items:center;
+  gap:30px;
+  flex-wrap:wrap;
+}
+
+.avatar{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:3rem;
+  color:#000;
+}
+
+.profile h3{
+  font-size:2rem;
+  margin-bottom:10px;
+}
+
+.stats{
+  display:flex;
+  gap:30px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+
+.stat{
+  text-align:center;
+}
+
+.stat-num{
+  font-family:'Bebas Neue',sans-serif;
+  color:var(--accent);
+  font-size:2.5rem;
+}
+
+.stat-label{
+  color:var(--muted);
+  font-size:.8rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:22px;
+}
+
+/* CARD */
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:28px;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  border-color:var(--accent);
+}
+
+.card h3{
+  font-family:'Bebas Neue',sans-serif;
+  letter-spacing:.05em;
+  color:var(--accent);
+  margin-bottom:16px;
+  font-size:1.7rem;
+}
+
+.card ul{
+  list-style:none;
+}
+
+.card li{
+  padding:10px 0;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  color:#d0d0d0;
+}
+
+.card li:last-child{
+  border:none;
+}
+
+/* CHECKLIST */
+.checklist{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:14px;
+}
+
+.check-item{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:18px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.check-item:hover{
+  border-color:var(--accent);
+}
+
+.check-item.active{
+  background:rgba(245,197,66,0.08);
+}
+
+.checkbox{
+  width:24px;
+  height:24px;
+  border:2px solid var(--muted);
+  border-radius:6px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:.9rem;
+}
+
+.check-item.active .checkbox{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:#000;
+}
+
+/* TRACKER */
+.days-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
+
+.week-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:20px;
+}
+
+.week-title{
+  font-family:'Bebas Neue',sans-serif;
+  color:var(--accent);
+  font-size:1.3rem;
+  margin-bottom:18px;
+}
+
+.days{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.day{
+  width:36px;
+  height:36px;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,.1);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:.25s;
+  font-size:.75rem;
+}
+
+.day:hover{
+  border-color:var(--accent);
+}
+
+.day.done{
+  background:var(--accent);
+  color:#000;
+  border-color:var(--accent);
+  font-weight:bold;
+}
+
+/* QUOTES */
+.quote-box{
+  background:var(--card);
+  border-left:4px solid var(--accent);
+  border-radius:16px;
+  padding:40px;
+  font-size:1.5rem;
+  line-height:1.6;
+  font-family:'Bebas Neue',sans-serif;
+  letter-spacing:.04em;
+}
+
+/* TIMER */
+.timer{
+  text-align:center;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:60px 20px;
+}
+
+#timerDisplay{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(4rem,12vw,8rem);
+  color:var(--accent);
+  margin:20px 0;
+}
+
+.timer-controls{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+/* FOOTER */
+footer{
+  padding:50px 20px;
+  text-align:center;
+  border-top:1px solid rgba(255,255,255,.08);
+  color:var(--muted);
+}
+
+.footer-brand{
+  font-family:'Bebas Neue',sans-serif;
+  color:var(--accent);
+  font-size:2rem;
+  margin-bottom:10px;
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+  .profile{
+    text-align:center;
+    justify-content:center;
+  }
+
+  .hero-btns{
+    flex-direction:column;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="badge">DISCIPLINE • FOCUS • GROWTH</div>
+
+    <h1>
+      <span>60</span><br>
+      DAYS HARD
+    </h1>
+
+    <p class="hero-sub">
+      Created by Mentor Divakar R
+    </p>
+
+    <div class="hero-btns">
+      <a href="#tracker" class="btn btn-primary">Start Challenge</a>
+      <a href="#focus" class="btn btn-secondary">Focus Mode</a>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- PROFILE -->
+  <section class="section">
+    <div class="section-label">Your Profile</div>
+    <div class="section-title">Challenge Stats</div>
+
+    <div class="profile">
+      <div class="avatar">D</div>
+
+      <div>
+        <h3>Divakar</h3>
+        <p style="color:var(--muted)">Challenge Level: HARD</p>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-num" id="daysDone">0</div>
+            <div class="stat-label">Days Done</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-num" id="progressPercent">0%</div>
+            <div class="stat-label">Progress</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-num" id="streak">0</div>
+            <div class="stat-label">Streak</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="section">
+    <div class="section-label">Motivation</div>
+    <div class="quote-box" id="quoteBox">
+      Discipline is choosing between what you want now and what you want most.
+    </div>
+  </section>
+
+  <!-- CHECKLIST -->
+  <section class="section">
+    <div class="section-label">Daily Habits</div>
+    <div class="section-title">Today's Checklist</div>
+
+    <div class="checklist" id="checklist"></div>
+  </section>
+
+  <!-- TRACKER -->
+  <section class="section" id="tracker">
+    <div class="section-label">Progress</div>
+    <div class="section-title">60 Day Tracker</div>
+
+    <div class="days-grid" id="weeksContainer"></div>
+  </section>
+
+  <!-- PROGRAM -->
+  <section class="section">
+    <div class="section-label">Blueprint</div>
+    <div class="section-title">Daily Program</div>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>Workout</h3>
+        <ul>
+          <li>Morning cardio</li>
+          <li>Strength training</li>
+          <li>Stretching routine</li>
+          <li>45 min minimum</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Study</h3>
+        <ul>
+          <li>1 hour deep work</li>
+          <li>Read 10 pages</li>
+          <li>No distractions</li>
+          <li>Take notes daily</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Mindset</h3>
+        <ul>
+          <li>Meditation</li>
+          <li>Journal writing</li>
+          <li>Cold shower</li>
+          <li>Positive mindset</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOCUS MODE -->
+  <section class="section" id="focus">
+    <div class="section-label">Focus Mode</div>
+
+    <div class="timer">
+      <h2 class="section-title">Deep Work Timer</h2>
+
+      <div id="timerDisplay">25:00</div>
+
+      <div class="timer-controls">
+        <button class="btn btn-primary" onclick="startTimer()">Start</button>
+        <button class="btn btn-secondary" onclick="pauseTimer()">Pause</button>
+        <button class="btn btn-secondary" onclick="resetTimer()">Reset</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-brand">60 DAYS HARD</div>
+  <p>Built by Mentor Divakar R</p>
+</footer>
+
+<script>
+
+/* QUOTES */
+const quotes = [
+"Discipline is stronger than motivation.",
+"Your future is built by what you do today.",
+"Hard work beats talent when talent doesn't work hard.",
+"Focus on progress, not perfection.",
+"One day or day one — you decide.",
+"Consistency creates transformation."
+];
+
+let quoteIndex = 0;
+const quoteBox = document.getElementById("quoteBox");
+
+setInterval(()=>{
+  quoteIndex = (quoteIndex + 1) % quotes.length;
+  quoteBox.style.opacity = 0;
+
+  setTimeout(()=>{
+    quoteBox.innerText = quotes[quoteIndex];
+    quoteBox.style.opacity = 1;
+  },300);
+
+},4000);
+
+/* CHECKLIST */
+const habits = [
+"Wake up early",
+"Workout",
+"Read 10 pages",
+"Drink 3L water",
+"No junk food",
+"Meditate",
+"Study 1 hour",
+"Sleep before 11 PM"
+];
+
+const checklist = document.getElementById("checklist");
+
+habits.forEach(habit=>{
+  const item = document.createElement("div");
+  item.className = "check-item";
+
+  item.innerHTML = `
+    <div class="checkbox">✓</div>
+    <div>${habit}</div>
+  `;
+
+  item.onclick = ()=>{
+    item.classList.toggle("active");
+  };
+
+  checklist.appendChild(item);
+});
+
+/* 60 DAYS TRACKER */
+const weeksContainer = document.getElementById("weeksContainer");
+
+let completed = 0;
+
+for(let w=1; w<=9; w++){
+
+  const weekCard = document.createElement("div");
+  weekCard.className = "week-card";
+
+  const title = document.createElement("div");
+  title.className = "week-title";
+  title.innerText = `Week ${w}`;
+
+  const days = document.createElement("div");
+  days.className = "days";
+
+  for(let d=1; d<=7; d++){
+
+    const totalDay = (w-1)*7+d;
+
+    if(totalDay>60) break;
+
+    const day = document.createElement("div");
+    day.className = "day";
+    day.innerText = totalDay;
+
+    day.onclick = ()=>{
+
+      day.classList.toggle("done");
+
+      completed = document.querySelectorAll(".day.done").length;
+
+      document.getElementById("daysDone").innerText = completed;
+
+      document.getElementById("progressPercent").innerText =
+      Math.floor((completed/60)*100) + "%";
+
+      document.getElementById("streak").innerText = completed;
+    };
+
+    days.appendChild(day);
+  }
+
+  weekCard.appendChild(title);
+  weekCard.appendChild(days);
+
+  weeksContainer.appendChild(weekCard);
+}
+
+/* TIMER */
+let timer;
+let timeLeft = 1500;
+
+function updateTimer(){
+
+  let mins = Math.floor(timeLeft/60);
+  let secs = timeLeft%60;
+
+  document.getElementById("timerDisplay").innerText =
+  `${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+}
+
+function startTimer(){
+
+  clearInterval(timer);
+
+  timer = setInterval(()=>{
+
+    if(timeLeft>0){
+      timeLeft--;
+      updateTimer();
+    }
+
+  },1000);
+}
+
+function pauseTimer(){
+  clearInterval(timer);
+}
+
+function resetTimer(){
+  clearInterval(timer);
+  timeLeft = 1500;
+  updateTimer();
+}
+
+updateTimer();
+
+</script>
+
+</body>
+</html>
